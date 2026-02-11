@@ -1,0 +1,213 @@
+---
+const vehicles = [
+  {
+    name: "Toyota Avanza",
+    type: "mobil",
+    category: "MPV",
+    seats: "7 Kursi",
+    image: "/ToyotaAvanza.png",
+    badge: "Populer",
+    badgeColor: "text-primary-700",
+    categoryBg: "bg-primary-50 text-primary-700",
+    description: "MPV keluarga terlaris, nyaman untuk perjalanan jauh maupun dalam kota.",
+    transmission: "Manual / Matic",
+    feature: "AC Dingin",
+    featureIcon: "fire",
+    iconColor: "text-primary-500",
+    price: "Rp 350rb",
+    waText: "Toyota%20Avanza"
+  },
+  {
+    name: "Toyota Innova Reborn",
+    type: "mobil",
+    category: "MPV",
+    seats: "7 Kursi",
+    image: "/ToyotaInnovaReborn.png",
+    badge: "Premium",
+    badgeColor: "text-emerald-700",
+    categoryBg: "bg-primary-50 text-primary-700",
+    description: "Kendaraan premium untuk perjalanan bisnis dan keluarga besar dengan kenyamanan terbaik.",
+    transmission: "Matic",
+    feature: "Interior Mewah",
+    featureIcon: "star",
+    iconColor: "text-primary-500",
+    price: "Rp 550rb",
+    waText: "Toyota%20Innova%20Reborn"
+  },
+  {
+    name: "Honda Brio RS",
+    type: "mobil",
+    category: "City Car",
+    seats: "5 Kursi",
+    image: "/HondaBrio.png",
+    badge: "Hemat",
+    badgeColor: "text-primary-700",
+    categoryBg: "bg-primary-50 text-primary-700",
+    description: "City car sporty dan irit bahan bakar, lincah untuk aktivitas harian dalam kota.",
+    transmission: "CVT Matic",
+    feature: "Irit BBM",
+    featureIcon: "bolt",
+    iconColor: "text-primary-500",
+    price: "Rp 300rb",
+    waText: "Honda%20Brio%20RS"
+  },
+  {
+    name: "Mitsubishi Pajero Sport",
+    type: "suv",
+    category: "SUV",
+    seats: "7 Kursi",
+    image: "/pajerosport.png",
+    badge: "Tangguh",
+    badgeColor: "text-amber-700",
+    categoryBg: "bg-amber-50 text-amber-700",
+    description: "SUV tangguh dan gagah untuk segala medan, cocok untuk petualangan dan perjalanan jarak jauh.",
+    transmission: "Matic 4WD",
+    feature: "Diesel Turbo",
+    featureIcon: "shield",
+    iconColor: "text-amber-500",
+    price: "Rp 800rb",
+    waText: "Mitsubishi%20Pajero%20Sport"
+  },
+  {
+    name: "Daihatsu Terios",
+    type: "suv",
+    category: "SUV",
+    seats: "7 Kursi",
+    image: "/Terios.png",
+    badge: "Adventure",
+    badgeColor: "text-teal-700",
+    categoryBg: "bg-teal-50 text-teal-700",
+    description: "SUV kompak yang lincah dan tangguh, ideal untuk wisata alam dan perkotaan.",
+    transmission: "Manual / Matic",
+    feature: "AC Dingin",
+    featureIcon: "fire",
+    iconColor: "text-teal-500",
+    price: "Rp 400rb",
+    waText: "Daihatsu%20Terios"
+  },
+  {
+    name: "Isuzu ELF Long",
+    type: "bus",
+    category: "ELF",
+    seats: "14 Kursi",
+    image: "/IsuzuELFLong.jpg",
+    badge: "Grup",
+    badgeColor: "text-lime-700",
+    categoryBg: "bg-lime-50 text-lime-700",
+    description: "Cocok untuk rombongan, gathering, dan wisata bersama keluarga besar.",
+    transmission: "14 Penumpang",
+    feature: "AC & Audio",
+    featureIcon: "check",
+    iconColor: "text-lime-600",
+    price: "Rp 900rb",
+    waText: "Isuzu%20ELF%20Long"
+  }
+];
+---
+
+<section id="kendaraan" class="py-14 sm:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 sm:mb-16 section-fade">
+      <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-3 sm:mb-4">Kendaraan <span class="text-primary-700">Kami</span></h2>
+      <p class="text-gray-500 max-w-2xl mx-auto text-sm sm:text-lg">Pilih kendaraan sesuai kebutuhan Anda. Semua unit terawat dan siap antar.</p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 section-fade">
+      <button class="filter-btn active bg-primary-700 text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300" data-filter="all">Semua</button>
+      <button class="filter-btn bg-gray-100 text-gray-600 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm hover:bg-primary-50 hover:text-primary-700 transition-all duration-300" data-filter="mobil">Mobil</button>
+      <button class="filter-btn bg-gray-100 text-gray-600 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm hover:bg-primary-50 hover:text-primary-700 transition-all duration-300" data-filter="suv">SUV</button>
+      <button class="filter-btn bg-gray-100 text-gray-600 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm hover:bg-primary-50 hover:text-primary-700 transition-all duration-300" data-filter="bus">Bus / ELF</button>
+    </div>
+
+    <div id="vehicle-grid" class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
+      {vehicles.map((v) => (
+        <div class="card-hover vehicle-card bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100 shadow-sm section-fade" data-type={v.type}>
+          <div class="h-28 sm:h-52 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center relative overflow-hidden group p-2 sm:p-4">
+            <img src={v.image} alt={v.name} class="h-full w-auto object-contain group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/90 backdrop-blur-sm rounded-full px-2 py-0.5 sm:px-3 sm:py-1.5">
+              <span class={`${v.badgeColor} text-[10px] sm:text-xs font-bold`}>{v.badge}</span>
+            </div>
+          </div>
+          <div class="p-3 sm:p-6">
+            <div class="flex items-center gap-1 sm:gap-2 mb-1.5 sm:mb-2">
+              <span class={`${v.categoryBg} text-[10px] sm:text-xs font-bold px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full`}>{v.category}</span>
+              <span class="bg-gray-50 text-gray-500 text-[10px] sm:text-xs font-medium px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full">{v.seats}</span>
+            </div>
+            <h3 class="text-sm sm:text-xl font-bold text-gray-900 mb-0.5 sm:mb-1 leading-tight">{v.name}</h3>
+            <p class="text-gray-400 text-[11px] sm:text-sm mb-2 sm:mb-4 line-clamp-2 leading-snug hidden sm:block">{v.description}</p>
+            <div class="hidden sm:flex items-center gap-4 mb-5 text-sm text-gray-500">
+              <span class="flex items-center gap-1.5">
+                <svg class={`w-4 h-4 ${v.iconColor}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+                {v.transmission}
+              </span>
+              <span class="flex items-center gap-1.5">
+                {v.featureIcon === 'fire' && (
+                  <svg class={`w-4 h-4 ${v.iconColor}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+                )}
+                {v.featureIcon === 'star' && (
+                  <svg class={`w-4 h-4 ${v.iconColor}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                )}
+                {v.featureIcon === 'bolt' && (
+                  <svg class={`w-4 h-4 ${v.iconColor}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                )}
+                {v.featureIcon === 'shield' && (
+                  <svg class={`w-4 h-4 ${v.iconColor}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                )}
+                {v.featureIcon === 'check' && (
+                  <svg class={`w-4 h-4 ${v.iconColor}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                )}
+                {v.feature}
+              </span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+              <div>
+                <span class="text-base sm:text-2xl font-black text-primary-700">{v.price}</span>
+                <span class="text-gray-400 text-[10px] sm:text-sm"> /hari</span>
+              </div>
+              <a href={`https://wa.me/6281234567890?text=Halo%20RentGo,%20saya%20ingin%20menyewa%20${v.waText}`} target="_blank"
+                 class="bg-primary-700 hover:bg-primary-600 text-white px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-[11px] sm:text-sm font-bold transition-all duration-300 hover:shadow-lg hover:shadow-primary-700/30 flex items-center justify-center gap-1.5 sm:gap-2 w-full sm:w-auto">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                Sewa
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Vehicle filter
+  function filterVehicles(type: string) {
+    const cards = document.querySelectorAll('.vehicle-card') as NodeListOf<HTMLElement>;
+    const btns = document.querySelectorAll('.filter-btn');
+
+    btns.forEach(btn => {
+      btn.classList.remove('bg-primary-700', 'text-white');
+      btn.classList.add('bg-gray-100', 'text-gray-600');
+    });
+
+    const activeBtn = document.querySelector(`[data-filter="${type}"]`);
+    activeBtn?.classList.add('bg-primary-700', 'text-white');
+    activeBtn?.classList.remove('bg-gray-100', 'text-gray-600');
+
+    cards.forEach(card => {
+      if (type === 'all' || card.dataset.type === type) {
+        card.style.display = 'block';
+        card.style.animation = 'fadeIn 0.5s ease forwards';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Attach click events to filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = (btn as HTMLElement).dataset.filter;
+      if (filter) filterVehicles(filter);
+    });
+  });
+</script>
